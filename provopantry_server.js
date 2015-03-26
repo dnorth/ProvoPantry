@@ -9,7 +9,7 @@ var db = require('./config/database');
 // configuration =============================================            
 mongoose.connect(db.url);
 
-app.use('/', express.static('./html'));
+app.use('/', express.static('./app'));
 
 // routes ====================================================            
 require('./app/routes.js')(app);

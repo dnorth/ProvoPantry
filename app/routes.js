@@ -19,7 +19,7 @@ app.use(cookieParser);
 	});
 
 
-app.post('/api/v1/login', function(req,res){
+/*app.post('/api/v1/login', function(req,res){
         var jsonData = "";
         req.on('data',function (chunk){
                 jsonData += chunk;
@@ -86,12 +86,12 @@ app.post('/api/v1/register',function(req,res){
                 });
         });
 });
-
+*/
 
 
 
     // application ------------------------------------
     app.get('*', function(req, res) {
-	    res.sendfile('./html/index.html');
+	    res.sendfile('./index.html');
 	});
 };
