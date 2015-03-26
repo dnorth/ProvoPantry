@@ -1,0 +1,37 @@
+
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module '/home/matt/Documents/ProvoPantry/provopantry_server.r.js'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Function.Module.runMain (module.js:497:10)
+    at startup (node.js:119:16)
+    at node.js:902:3
+[33m
+##############################################################
+#
+#   !!! MONGOOSE WARNING !!!
+#
+#   This is an UNSTABLE release of Mongoose.
+#   Unstable releases are available for preview/testing only.
+#   DO NOT run this in production.
+#
+##############################################################
+[0m
+App listening on port: 9002
+
+/home/matt/Documents/node_modules/mongoose/node_modules/mongodb/lib/server.js:228
+        process.nextTick(function() { throw err; })
+                                            ^
+Error
+    at Error.MongoError (/home/matt/Documents/node_modules/mongoose/node_modules/mongodb/node_modules/mongodb-core/lib/error.js:13:17)
+    at Server.destroy (/home/matt/Documents/node_modules/mongoose/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:629:47)
+    at Server.close (/home/matt/Documents/node_modules/mongoose/node_modules/mongodb/lib/server.js:344:17)
+    at Db.close (/home/matt/Documents/node_modules/mongoose/node_modules/mongodb/lib/db.js:267:19)
+    at /home/matt/Documents/node_modules/mongoose/node_modules/mongodb/lib/db.js:196:12
+    at null.<anonymous> (/home/matt/Documents/node_modules/mongoose/node_modules/mongodb/lib/server.js:226:9)
+    at g (events.js:180:16)
+    at EventEmitter.emit (events.js:98:17)
+    at null.<anonymous> (/home/matt/Documents/node_modules/mongoose/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:238:68)
+    at g (events.js:180:16)
