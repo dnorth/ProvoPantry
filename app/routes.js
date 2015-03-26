@@ -1,8 +1,9 @@
 // setup ---------------------------------------------
 var users = require('./models/users');
-
+var cookieParser = require('cookie-parser');
 module.exports = function(app) {
 
+app.use(cookieParser);
     // api -------------------------------------------
     app.get('/api/v1/users/:username', function(req, res) {
 	    var userName = req.param('username');
@@ -18,7 +19,7 @@ module.exports = function(app) {
 	});
 
 
-app.post('/login', function(req,res){
+app.post('/api/v1/login', function(req,res){
         var jsonData = "";
         req.on('data',function (chunk){
                 jsonData += chunk;
@@ -41,6 +42,7 @@ app.post('/login', function(req,res){
                                         else if(usrArray[0].password==pswrd){
                                                 console.log('successful login');
                                                 res.writeHead(200);
+						res.cookie("di_angello_vickers","1",{age:60*5});
                                                 res.end('success');
                                         }
                                         else{
@@ -54,7 +56,7 @@ app.post('/login', function(req,res){
 
         });
 
-app.post('/register',function(req,res){
+app.post('/api/v1/register',function(req,res){
         var jsonData = "";
         req.on('data',function (chunk){
                 jsonData += chunk;
