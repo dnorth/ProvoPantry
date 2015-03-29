@@ -1,8 +1,16 @@
 var home = {
     name: 'home',
     url: '/home',
-    templateUrl: 'components/home/homeView.html',
-    controller: 'HomeController'
+    views: {
+        'content': {
+            templateUrl: 'components/home/homeView.html',
+            controller: 'HomeController'
+        },
+        'sidebar': {
+            templateUrl: 'components/sidebar/sidebarView.html',
+            controller: 'SidebarController'
+        }
+    },
 }
 
 angular.module('provoPantry', ['ui.router'])
@@ -12,6 +20,7 @@ angular.module('provoPantry', ['ui.router'])
 	     function($stateProvider, $urlRouterProvider) {
             $stateProvider
             .state(home);
+            //.state(sidebar);
             
             $urlRouterProvider.otherwise('home');
 	     }]);
