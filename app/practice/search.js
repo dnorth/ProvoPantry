@@ -25,24 +25,22 @@ angular.module("search", [])
 			for(var i=0; i < data.matches.length; i++) {
 				var result = {
 					id: data.matches[i].id,
-					name: data.matches[i].recipeName
+					name: data.matches[i].recipeName,
+					imageURL: data.matches[i].smallImageUrls[0],
+					source: data.matches[i].sourceDisplayName,
+					ingredients: []
 				};
+				for(var j=0; j < data.matches[i].ingredients.length; j++) {
+					result.ingredients.push(data.matches[i].ingredients[j]);
+				}
 				$scope.results.push(result);
 			}
-			/*var result = "<ul>";
-			var match = data.matches[0];//the first search result
-			result += "<li><b>id:</b> "+match.id+"</li>";
-			result += "<li><b>image:</b> "+match.smallImageUrls[0]+"</li>";
-			result += "<li><b>name:</b> "+match.recipeName+"</li>";
-			result += "<li><b>course:</b> "+match.attributes.course+"</li>";
-			result += "<ul>";
-			for(var i = 0; i < match.ingredients.length; i++) {
-				result += "<li>"+match.ingredients[i]+"</li>";
-			}
-			result += "</ul></ul>";
-			document.getElementById('search').innerHTML = result;*/
 		});
 	}
+
+	$scope.getRecipe = function(id) {
+		console.log(id);
+	};
 }])
 .config(function($httpProvider) {
 	delete $httpProvider.defaults.headers.common['X-Requested-With'];
