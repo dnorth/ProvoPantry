@@ -11,6 +11,7 @@ mongoose.connect(db.url);
 
 app.use('/', express.static('./app'));
 app.use('/assets', express.static('./assets'));
+
 // routes ====================================================            
 require('./app/routes.js')(app);
 
