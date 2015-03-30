@@ -13,6 +13,10 @@ var home = {
     },
 }
 
+//var register = {
+//    
+//}
+
 angular.module('provoPantry', ['ui.router'])
     .config([
 	     '$stateProvider',
@@ -20,7 +24,7 @@ angular.module('provoPantry', ['ui.router'])
 	     function($stateProvider, $urlRouterProvider) {
             $stateProvider
             .state(home);
-            //.state(sidebar);
+            //.state(register);
             
             $urlRouterProvider.otherwise('home');
 	     }]);
