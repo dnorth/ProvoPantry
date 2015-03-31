@@ -27,6 +27,7 @@
     <script src="./module.js"></script>
     <script src="./components/home/homeController.js"></script>
     <script src="./components/sidebar/sidebarController.js"></script>
+    <script src="./components/login/loginController.js"></script>
   </head>
 
   <body ng-app="provoPantry">
@@ -41,11 +42,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12" id="content">
-                            <div ui-view="content">Loading Main View...</div>
+                            <ui-view>Loading Main View...</ui-view>
                     </div>
                 </div>
             </div>
         </div>
+        
 
     </div>
   </body>

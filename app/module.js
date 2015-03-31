@@ -2,20 +2,35 @@ var home = {
     name: 'home',
     url: '/home',
     views: {
-        'content': {
+        '@': {
             templateUrl: 'components/home/homeView.html',
             controller: 'HomeController'
         },
-        'sidebar': {
+        'sidebar@': {
             templateUrl: 'components/sidebar/sidebarView.html',
             controller: 'SidebarController'
         }
     },
 }
 
-//var register = {
-//    
-//}
+var login = {
+    name: 'login',
+    url: '/login',
+    views: {
+        '@': {
+            templateUrl: 'components/login/loginView.html',
+            controller: 'LoginController'
+        },
+        'register@': {
+            templateUrl: 'components/register/registerView.html',
+            controller: 'LoginController'
+        },
+        'sidebar@': {
+            templateUrl: 'components/sidebar/sidebarView.html',
+            controller: 'SidebarController'
+        }
+    }    
+}
 
 angular.module('provoPantry', ['ui.router'])
     .config([
@@ -23,8 +38,8 @@ angular.module('provoPantry', ['ui.router'])
 	     '$urlRouterProvider',
 	     function($stateProvider, $urlRouterProvider) {
             $stateProvider
-            .state(home);
-            //.state(register);
+            .state(home)
+            .state(login);
             
-            $urlRouterProvider.otherwise('home');
+            $urlRouterProvider.otherwise('/home');
 	     }]);
