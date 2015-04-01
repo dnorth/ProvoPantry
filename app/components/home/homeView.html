@@ -1,17 +1,11 @@
-<div class="panel ">
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-2">
-                <!-- Image -->
-                <img src="/assets/img/grilled-cheese.jpg" alt="Grilled Cheese-y!!!" height="130" width="150">
-            </div>
-            <div class="col-md-8">
-                <h3>Grilled Mac & Cheese Sandwich</h3>
-                BOOM BABEH!
-            </div>
-            <div class="col-md-2">
-                Try it with:
-            </div>
-        </div>
-    </div>
+<div class='col-md-12'>
+	<div ng-repeat="recipe in results" style="background-color:#E8E7E6;margin-bottom:10px" class="col-md-12">
+		<div class="col-md-2" style="margin-top:5px">
+			<img src={{recipe.imageURL}}>
+		</div>
+		<h3>{{recipe.name}}</h3>
+		<p><b>From:</b> {{recipe.source}}</p>
+		<b>Ingredients: </b><span ng-repeat="ingredient in recipe.ingredients">{{ingredient}}, </span>
+		<p style="margin-top:20px"><button ng-click="getRecipe(recipe.id)">See Recipe</button></p>
+	</div>
 </div>

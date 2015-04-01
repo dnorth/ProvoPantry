@@ -94,6 +94,6 @@ module.exports = function(router) {
 
     // application ------------------------------------
 	router.get('*', function(req, res) {
-		res.sendFile('./index.html');
+		res.sendFile('./index.html', {root: "app"});
 	});
 };
