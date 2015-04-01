@@ -3,7 +3,7 @@ var express = require('express');
 var router  = express.Router();
 var mongoose = require('mongoose');
 var app = express();
-var port = 80;
+var port = 9002;
 var db = require('./config/database');
 //var bodyParser = require('body-parser');                                
 

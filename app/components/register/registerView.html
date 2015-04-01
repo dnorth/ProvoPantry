@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4">
+      <div class="panel">
+        <div class="panel-heading text-center">
+          <h1>Register</h1>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">      
+              <form id="registerForm" ng-submit="submitRegistration()">
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input oninvalid="validateUsername(this)" oninput="validateUsername(this)" class="text-center form-control" name="username" type="text" placeholder="" pattern=".[a-zA-Z0-9_]{5,}" maxlength="20" autofocus required>
+                  <p class="help-block">Username can contain letters or numbers, without spaces</p>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email (Optional)</label>
+                  <input oninvalid="validateEmail(this)" oninput="validateEmail(this)" class="text-center form-control" name="email" type="text" placeholder="" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+                  <p class="help-block">Provide an email if you wish</p>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input oninput="validatePassword()" class="text-center form-control" type="password" pattern=".{5,}" placeholder="" id="password" required>
+                  <p class="help-block">Password should be at least 6 characters</p>
+                </div>
+                <div class="form-group">
+                  <label for="confirm_password">Confirm Password</label>
+                  <input oninput="validatePassword()" class="text-center form-control" type="password" pattern="^.{5,}$" placeholder="" id="confirm_password" required>
+                  <p class="help-block">Please confirm your password</p>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info btn-block" type="submit">Create New Account</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-md-offset-5">      
+              <a ui-sref="login">Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
