@@ -8,7 +8,8 @@ var UserSchema = new Schema({
     firstName: String,
     lastName: String,
     email: String,
-    joinedDate: { type: Date, default: Date.now }  
+    joinedDate: { type: Date, default: Date.now },
+    favorites: []  
 });
 
 UserSchema.methods.withoutPassword = function withoutPassword() {
@@ -18,7 +19,8 @@ UserSchema.methods.withoutPassword = function withoutPassword() {
         firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
-        joinedDate: this.joinedDate
+        joinedDate: this.joinedDate,
+        favorites: this.favorites
     }
 }
 
