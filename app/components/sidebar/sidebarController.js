@@ -2,8 +2,6 @@ angular.module('provoPantry').controller('SidebarController',
     ['$scope', '$http', 'recipeFactory', function($scope, $http, recipeFactory){
 
 	$scope.ingredients = [];
-	//$scope.results = [];
-	//$scope.results = recipeFactory.recipes;
 	var appId  = '8722cb52';
 	var apiKey = '07e376a569ffb79e44e7122e1abe9b0a';
 
@@ -31,7 +29,8 @@ angular.module('provoPantry').controller('SidebarController',
 					name: data.matches[i].recipeName,
 					imageURL: data.matches[i].smallImageUrls[0],
 					source: data.matches[i].sourceDisplayName,
-					ingredients: []
+					ingredients: [],
+					queries: 0
 				};
 				for(var j=0; j < data.matches[i].ingredients.length; j++) {
 					result.ingredients.push(data.matches[i].ingredients[j]);
