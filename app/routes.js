@@ -29,14 +29,15 @@ module.exports = function(router) {
 		});
 		req.on('end', function(){
                     var regObj = JSON.parse(jsonData);
-       		    var id = regObj.id;
+       		    var favorote_id = regObj.id;
 		    var name = regObj.name;
 		    var url = regObj.url;	
-                    console.log(regObj)             
-		
-		users.findOne(username:req.session.username},function(err,result){
+                    console.log(regObj);             
+		    var user_id = req.session.user;		
+		users.findOne({id:user_id},function(err,result){
 			if(err) throw err;
-			if(result != null){
+			if(result != null)
+			{
                              console.log('found the user');
 			     //check if user has already faved it
 			     //if(has not faved)
