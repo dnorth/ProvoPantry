@@ -10,6 +10,11 @@ angular.module('provoPantry').controller('SidebarController',
 		$scope.ingredientInput = "";
 	};
 
+	$scope.removeIngredient = function(ingredient) {
+		var index = $scope.ingredients.indexOf(ingredient);
+		$scope.ingredients.splice(index, 1);
+	};
+
 	$scope.search = function() {
 		if($scope.ingredients.length < 1) {
 			alert('Please add some ingredients to include in your recipe!');
