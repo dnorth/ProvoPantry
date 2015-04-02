@@ -1,68 +1,65 @@
-var crypto = require('crypto');
+var users = require('../models/users');
 var mongoose = require('mongoose');
 var User = mongoose.model('users');
-//sessions or cookies? Rediect to where?
+var crypto = require('crypto');
 function hashPW(pwd){
   return crypto.createHash('sha256').update(pwd).
          digest('base64').toString();
 }
 
-exports.register = function(req,res){
-        var regObj = req.body;
-                var username = regObj.username;
-                users.findOne({username:username},function(err,result){
-                	if(err) throw err;
-                        if(result!=null){
-                        	console.log('username in use');
-                                console.log(result);
-                                res.writeHead(200);
-                                res.end('invalid');
-				//consider res.redirect('regsiter url');
-                        }
-                        else{
-                        	var newUser = new users(regObj);
-				newUser.password = hashPW(regObj.password);
-                                newUser.save(function(err,user){
-                                        console.log('Added user '+ username);
-                                        res.redirect('/');
-                                });
-                        }
-
-                });
-        });
-}
-
-exports.login = function(req,res){
-	//might be able to use req.body as our object
-        var lgnObj = req.body;
-        var username = lgnObj.username;
-        var pswrd = hashPW(lgnObj.password);
-
-        users.findOne({username:username},function(err,user){
-                if(err) throw err;
-                if(user==null){
-                        console.log('username not found');
-                        res.writeHead(200);
-                        res.json([]);
-                }
-                else{
-                        if(user.password==pswrd){
-                        	console.log('successful login');
-                                res.redirect('/');
-                        }
-                        else{
-                              	console.log('incorrect password');
-                                res.writeHead(200);
-                                res.end('incorrect password');
-                        }
-                }
+exports.login = function(req, res){
+	var lgnObj = req.body;
+	var username = lgnObj.username;
+	var pswrd = lgnObj.password;
+	users.findOne({username:username},function(err,user){
+		if(err) throw err;
+		if(user==null){
+			console.log(username + " does not exist.")
+			res.json({});
+		}
+		else{
+			if(user.password==hashPW(pswrd)){
+				req.session.user = user.id;
+        			req.session.username = user.username;
+				console.log(username + " authenticated!");
+				res.json(user.withoutPassword());
+			}
+			else{
+				console.log(username + " failed authentication.")
+				res.json({'failure' : 'failure'});
+			}
+		}
 	});
 }
 
 
 
-
-
-
-
-
+exports.register = function(req,res){
+	var regObj = req.body;
+	var name_f = regObj.first;
+	var name_l = regObj.last;
+	var username = regObj.username;
+	var pswrd = regObj.password;
+	console.log(regObj);
+	users.findOne({username:username},function(err,result){
+		if(err) throw err;
+		if(result!=null){
+			console.log('username in use');
+			console.log(result);
+			res.writeHead(200);
+			res.end('invalid');
+		}
+		else{
+			var newUser = new users(regObj);
+			newUser.password = hashPW(pswrd);
+			console.log(newUser)
+			newUser.save(function(err,user){
+				console.log('Added user '+ username);
+				req.session.user = user.id;
+      				req.session.username = user.username;
+				res.writeHead(200);
+				res.end('WERK');
+			});
+		}
+	});
+}
