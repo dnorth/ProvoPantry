@@ -30,24 +30,21 @@ module.exports = function(router) {
                 	var username = lgnObj.username;
                 	var pswrd = lgnObj.password;
 
+
                         users.findOne({username:username},function(err,user){
                                 if(err) throw err;
 				if(user==null){
-					console.log('username not found');
-                                        res.writeHead(200);
-                                        res.json([]);
+                    console.log(username + " does not exist.")
+                    res.json({});
 				}
 				else{
 					if(user.password==pswrd){
-                                                console.log('successful login');
-                                                res.writeHead(200);
-                                                //res.cookie("di_angello_vickers","1",{age:60*5});
-                                                res.end('success');
+                                                console.log(username + " authenticated!")
+                                                res.json(user.withoutPassword());
                                          }
                                          else{
-                                                console.log('incorrect password');
-                                                res.writeHead(200);
-                                                res.end('incorrect password');
+                                                console.log(username + " failed authentication.")
+                                                res.json({'failure' : 'failure'});
                                         }
 				}
                         });

@@ -10,10 +10,10 @@
             <div class="col-md-10 col-md-offset-1">      
               <form ng-submit="validateUser()" id="loginForm">
                 <div class="form-group">
-                  <input class="text-center form-control" name="username" type="text" placeholder="username" ng-model="username">
+                  <input ng-model="username" class="form-control text-center" name="username" type="text" placeholder="username" ng-model="username">
                 </div>
                 <div class="form-group">
-                  <input class="text-center form-control" type="password" placeholder="password" ng-model="password">
+                  <input ng-model="password" class="text-center form-control" type="password" placeholder="password" ng-model="password">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-info btn-block" type="submit">Login</button>
@@ -22,7 +22,8 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4 col-md-offset-4">      
+            <div class="col-md-12">      
+              <div> HELLO </div>
               <a ui-sref="register" >Sign Up</a>
             </div>
           </div>

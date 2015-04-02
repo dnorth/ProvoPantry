@@ -1,16 +1,17 @@
 angular.module('provoPantry').controller('LoginController', 
-    ['$scope', '$http', function($scope, $http){
-        $scope.test = "PROVO PANTRY FOR LIFE!";
+    ['$scope', '$http', 'UserFactory',  function($scope, $http, UserFactory){
 
 	$scope.validateUser = function(){
 	    
 	    //TODO validate properly
-	    if($scope.username == "dnorth2" && $scope.password == "test"){
+        UserFactory.validateUser({
+            username: $scope.username,
+            password: $scope.password
+        });
+        $scope.user = UserFactory.user;
+        
+        console.log($scope.user);
 		alert("Validated!!");
-	    }
-	    else {
-		alert("Not Validated! try username: dnorth2 and password: test");
-	    }
 	}
         
         $scope.submitRegistration = function(){
