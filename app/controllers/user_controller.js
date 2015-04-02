@@ -18,7 +18,7 @@ exports.login = function(req, res){
 		if(err) throw err;
 		if(user==null){
 			console.log(username + " does not exist.")
-			res.json({});
+			    res.json({'username' : 'fail'});
 		}
 		else{
 			if(user.password==hashPW(pswrd)){
@@ -30,7 +30,7 @@ exports.login = function(req, res){
 			}
 			else{
 				console.log(username + " failed authentication.")
-				res.json({'failure' : 'failure'});
+				res.json({'username' : 'fail'});
 			}
 		}
 	});

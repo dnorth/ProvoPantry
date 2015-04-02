@@ -34,7 +34,7 @@ module.exports = function(router) {
 		    var url = regObj.url;	
                     console.log(regObj)             
 		
-		users.findOne(username:req.session.username},function(err,result){
+			users.findOne({username:req.session.username},function(err,result){
 			if(err) throw err;
 			if(result != null){
                              console.log('found the user');
