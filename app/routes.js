@@ -34,7 +34,7 @@ module.exports = function(router) {
 		    var url = regObj.url;	
                     console.log(regObj)             
 		
-			users.findOne({username:req.session.username},function(err,result){
+		     users.findOne({username:req.session.username},function(err,result){
 			if(err) throw err;
 			if(result != null){
                              console.log('found the user');
@@ -58,7 +58,7 @@ module.exports = function(router) {
 
 	router.post('/api/v1/login',usrCntrl.login);
 	router.post('/api/v1/register',usrCntrl.register);
-	router.get('/api/v1/logout',usrCntrl.logout);
+	router.post('/api/v1/logout',usrCntrl.logout);
 
 
     // application ------------------------------------
