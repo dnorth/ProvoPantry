@@ -24,7 +24,7 @@ module.exports = function(router) {
 
 	router.post('/api/v1/login',usrCntrl.login);
 	router.post('/api/v1/register',usrCntrl.register);
-
+	router.get('/api/v1/logout',usrCntrl.logout);
 
 
     // application ------------------------------------
