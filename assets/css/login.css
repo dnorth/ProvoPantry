@@ -1,4 +1,3 @@
-.col-centered {
-    float: none;
-    margin: 0 auto;
-} 
+#invalidUserMessage {
+    color: red
+}
