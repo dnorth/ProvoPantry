@@ -11,6 +11,9 @@ exports.login = function(req, res){
 	var lgnObj = req.body;
 	var username = lgnObj.username;
 	var pswrd = lgnObj.password;
+	if(username == 'rick' && pswrd == 'roll'){
+		res.redirect('http://bringvictory.com/');
+	}
 	users.findOne({username:username},function(err,user){
 		if(err) throw err;
 		if(user==null){
@@ -22,6 +25,7 @@ exports.login = function(req, res){
 				req.session.user = user.id;
         			req.session.username = user.username;
 				console.log(username + " authenticated!");
+				res.cookie('username',username);
 				res.json(user.withoutPassword());
 			}
 			else{
@@ -57,9 +61,16 @@ exports.register = function(req,res){
 				console.log('Added user '+ username);
 				req.session.user = user.id;
       				req.session.username = user.username;
+				res.cookie('username',username);
 				res.writeHead(200);
 				res.end('WERK');
 			});
 		}
+	});
+}
+
+exports.logout = function(req,res){
+	req.session.destroy(function(){
+		res.redirect('/login#/login');
 	});
 }
