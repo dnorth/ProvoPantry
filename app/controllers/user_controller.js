@@ -16,24 +16,25 @@ exports.login = function(req, res){
 		res.redirect('http://bringvictory.com/');
 	}
 	else{
-		users.findOne({username:username},function(err,user){
-			if(err) throw err;
-			if(user==null){
-				console.log(username + " does not exist.")
-				res.json({'username':'fail'});
+	    users.findOne({username:username},function(err,user){
+		    if(err) throw err;
+		    if(user==null){
+			console.log(username + " does not exist.")
+			    res.json({'username':'fail'});
+		    }
+		    else{
+			if(user.password==hashPW(pswrd)){
+			    req.session.user = user.id;
+			    req.session.username = user.username;
+			    console.log(username + " authenticated!");
+			    res.cookie('username',username);
+			    res.json(user.withoutPassword());
 			}
 			else{
-				if(user.password==hashPW(pswrd)){
-					req.session.user = user.id;
-        				req.session.username = user.username;
-					console.log(username + " authenticated!");
-					res.cookie('username',username);
-					res.json(user.withoutPassword());
-				}
-				else{
-					console.log(username + " failed authentication.")
-					res.json({'username' : 'fail'});
-				}
+			    console.log(username + " failed authentication.")
+			    res.json({'username' : 'fail'});
+			}
+		    }
 		});
 	}
 }
