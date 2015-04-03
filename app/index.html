@@ -37,24 +37,17 @@
   </head>
 
   <body ng-app="provoPantry">
-  
-  <div id="wrapper">
-
-       <!-- Sidebar -->
-       <div ui-view="sidebar">Sidebar</div>
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">  
-                    <div class="col-lg-12" id="content">
-                            <ui-view>Loading Main View...</ui-view>
-                    </div>
-                </div>
-            </div>
+    <div id="wrapper" class="container-fluid">
+      <div class="row">
+	<!-- Sidebar -->
+	<div ui-view="sidebar" class="col-md-3">Sidebar</div>
+	<!-- Page Content -->
+	<div id="page-content-wrapper">
+          <div class="col-md-9" id="content">
+            <ui-view>Loading Main View...</ui-view>
+          </div>
         </div>
-        
-
+      </div>
     </div>
   </body>
 </html>

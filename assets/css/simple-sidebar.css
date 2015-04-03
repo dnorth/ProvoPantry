@@ -1,3 +1,9 @@
+/* Custom CSS for the Sidebar */
+#logo {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 /*!
  * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
