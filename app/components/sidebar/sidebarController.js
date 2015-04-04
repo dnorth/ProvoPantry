@@ -1,5 +1,5 @@
 angular.module('provoPantry').controller('SidebarController', 
-    ['$scope', '$http', 'recipeFactory', function($scope, $http, recipeFactory){
+					 ['$scope', '$http', '$cookies', 'recipeFactory', 'UserFactory', function($scope, $http, $cookies, recipeFactory, UserFactory){
 
 	$scope.ingredients = [];
 	var appId  = '8722cb52';
@@ -14,6 +14,8 @@ angular.module('provoPantry').controller('SidebarController',
 		var index = $scope.ingredients.indexOf(ingredient);
 		$scope.ingredients.splice(index, 1);
 	};
+
+	$scope.sessionUser = UserFactory.user;
 
 	$scope.search = function() {
 		if($scope.ingredients.length < 1) {

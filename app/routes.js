@@ -11,14 +11,15 @@ module.exports = function(router) {
     router.get('/api/v1/users/:username', function(req, res) {
 	    var userName = req.param('username');
 	    users.findOne({ username: userName }, function (err, user) {
-			if (err) return err;
-			if (err == null) {
-			    res.json([]); 
-			}
-			else {
+		    console.log("Trying to get the user: " + userName);
+		    if (err) return err;
+		    if (user == null) {
+			res.json([]); 
+		    }
+		    else {
 			res.json(user.withoutPassword());
-			}
-		    });
+		    }
+		});
 	});
 
 	router.post('/api/v1/favorite',function(req, res){

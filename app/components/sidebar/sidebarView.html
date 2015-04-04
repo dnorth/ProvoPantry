@@ -1,7 +1,14 @@
 <div id="sidebar-wrapper">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12" ui-sref="home">
       <img id="logo" src="/assets/img/logoonwhite.jpg">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <div>
+	<a ui-sref="profile"><h5>Welcome, <span ng-bind="getUserCookie"></span></h5></a>
+      </div>
     </div>
   </div>
   <div class="row">

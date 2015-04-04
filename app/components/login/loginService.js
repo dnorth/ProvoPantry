@@ -1,4 +1,4 @@
-angular.module('provoPantry').factory('UserFactory', ['$http', function($http) {
+angular.module('provoPantry').factory('UserFactory', ['$http', '$cookies', function($http, $cookies) {
     
     var userData = {
         user: {}
@@ -11,5 +11,12 @@ angular.module('provoPantry').factory('UserFactory', ['$http', function($http) {
         });
     }    
     
+    userData.getUser = function() {
+	var url = '/api/v1/users/' + $cookies.username;
+	return $http.get(url).success(function(data) {
+		user = data;
+	    });
+    }
+
     return userData;
 }]);
