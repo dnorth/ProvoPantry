@@ -90,3 +90,17 @@ Error: Cannot find module 'body-parser'
     at Module.load (module.js:356:32)
     at Function.Module._load (module.js:312:12)
     at Function.Module.runMain (module.js:497:10)
+[33m
+##############################################################
+#
+#   !!! MONGOOSE WARNING !!!
+#
+#   This is an UNSTABLE release of Mongoose.
+#   Unstable releases are available for preview/testing only.
+#   DO NOT run this in production.
+#
+##############################################################
+[0m
+Sun, 05 Apr 2015 02:12:00 GMT express-session deprecated undefined resave option; provide resave option at provopantry_server.js:19:9
+Sun, 05 Apr 2015 02:12:00 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at provopantry_server.js:19:9
+App listening on port: 9002
