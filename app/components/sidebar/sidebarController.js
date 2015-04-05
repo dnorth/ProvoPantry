@@ -8,7 +8,7 @@ angular.module('provoPantry').controller('SidebarController',
 		{
 			name:'include',
 			list: [],
-			color: "#DFF0D8",
+			color: "#5A764B",
 			placeholder: "Add Ingredient",
 			title: "Include these ingredients",
 			apiTag: "&allowedIngredient[]="
@@ -16,7 +16,7 @@ angular.module('provoPantry').controller('SidebarController',
 		{
 			name:'exclude',
 			list: [],
-			color: "#F2DEDE",
+			color: "#BF4D48",
 			placeholder: "Exclude Ingredient",
 			title: "Exclude these ingredients",
 			apiTag: "&excludedIngredient[]="
