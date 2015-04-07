@@ -8,6 +8,7 @@ function hashPW(pwd){
 }
 
 exports.login = function(req, res){
+ 	console.log("in login route");
 	var lgnObj = req.body;
 	var username = lgnObj.username;
 	var pswrd = lgnObj.password;
