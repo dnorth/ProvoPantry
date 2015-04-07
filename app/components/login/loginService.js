@@ -5,16 +5,16 @@ angular.module('provoPantry').factory('UserFactory', ['$http', '$cookies', funct
     }
     
     userData.validateUser = function(data, next) {
-        return $http.post('/api/v1/login', data).success(function(data) {
-            angular.copy(data, userData.user);
-	    next(userData.user);
+        return $http.post('/api/v1/login', data).success(function(res) {
+            next(res);
         });
     }    
     
-    userData.getUser = function() {
+    userData.getUser = function(next) {
 	var url = '/api/v1/users/' + $cookies.username;
 	return $http.get(url).success(function(data) {
-		user = data;
+		angular.copy(data, userData.user);
+        next();
 	    });
     }
 

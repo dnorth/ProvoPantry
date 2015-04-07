@@ -6,12 +6,14 @@ angular.module('provoPantry').controller('LoginController',
 	    UserFactory.validateUser({
 		    username: $scope.username,
 		    password: $scope.password
-		}, function(data) {
-		    if(data.username == 'fail') {
-		$scope.invalidUserMessage = 'Invalid Username or Password.';
+		}, function(res) {
+		    if(res.redirect) {
+                window.location = res.redirect;
+		    }
+		    else {
+			    $scope.invalidUserMessage = "Invalid username or password";
 		    }
 		});
-	    $scope.user = UserFactory.user;
 	}	
         
         $scope.submitRegistration = function(){

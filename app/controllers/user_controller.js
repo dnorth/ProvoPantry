@@ -20,19 +20,24 @@ exports.login = function(req, res){
 		    if(err) throw err;
 		    if(user==null){
 			console.log(username + " does not exist.")
-			    res.json({'username':'fail'});
+			    res.json({});
 		    }
 		    else{
 			if(user.password==hashPW(pswrd)){
-			    req.session.user = user.id;
-			    req.session.username = user.username;
-			    console.log(username + " authenticated!");
-			    res.cookie('username',username);
-			    res.json(user.withoutPassword());
+			    req.session.regenerate(function() {
+				    req.session.user = user.id;
+				    req.session.username = user.username;
+				    console.log(username + " authenticated!");
+				    res.cookie('username',username);
+				    res.json({'redirect' : '/home'});
+				});
+			    //res.json(user.withoutPassword());
 			}
 			else{
 			    console.log(username + " failed authentication.")
-			    res.json({'username' : 'fail'});
+                req.session.regenerate(function() {
+			        res.json({});
+                }
 			}
 		    }
 		});

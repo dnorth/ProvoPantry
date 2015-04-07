@@ -1,6 +1,9 @@
 angular.module('provoPantry').controller('SidebarController', 
 					 ['$scope', '$http', '$cookies', 'recipeFactory', 'UserFactory', function($scope, $http, $cookies, recipeFactory, UserFactory){
 
+    UserFactory.getUser(function() {
+        $scope.sessionUser = UserFactory.user;
+    });
 	$scope.placeholder = "Add Ingredient";
 	var appId  = '8722cb52';
 	var apiKey = '07e376a569ffb79e44e7122e1abe9b0a';
@@ -51,8 +54,6 @@ angular.module('provoPantry').controller('SidebarController',
 		var ingredientIndex = $scope.searchTypes[index].list.indexOf(ingredient);
 		$scope.searchTypes[index].list.splice(ingredientIndex, 1);
 	};
-
-	$scope.sessionUser = UserFactory.user;
 
 	$scope.search = function() {
 		if($scope.searchTypes[0].list.length < 1) {
