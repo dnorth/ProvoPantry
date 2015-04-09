@@ -8,6 +8,7 @@ function hashPW(pwd){
 }
 
 exports.login = function(req, res){
+ 	console.log("in login route");
 	var lgnObj = req.body;
 	var username = lgnObj.username;
 	var pswrd = lgnObj.password;
@@ -19,7 +20,7 @@ exports.login = function(req, res){
 	    users.findOne({username:username},function(err,user){
 		    if(err) throw err;
 		    if(user==null){
-			console.log(username + " does not exist.")
+			console.log(username + " does not exist.");
 			    res.json({});
 		    }
 		    else{

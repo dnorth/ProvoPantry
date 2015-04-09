@@ -24,20 +24,18 @@ module.exports = function(router) {
 
 	router.post('/api/v1/favorite',function(req, res){
                console.log("in favorites route");
-		var jsonData = "";
-               req.on('data', function (chunk){
-		     jsonData += chunk;
-		});
-		req.on('end', function(){
-                    var regObj = JSON.parse(jsonData);
-       		    var id = regObj.id;
+		
+                    var regObj = req.body;
+       		    var favorote_id = regObj.id;
 		    var name = regObj.name;
 		    var url = regObj.url;	
-                    console.log(regObj)             
-		
+                    console.log(regObj);             
+		    var user_id = req.session.user;		
+                                
 		     users.findOne({username:req.session.username},function(err,result){
-			if(err) throw err;
-			if(result != null){
+			//if(err) throw err;
+		        //if(result != null)
+			//{
                              console.log('found the user');
 			     //check if user has already faved it
 			     //if(has not faved)
@@ -46,14 +44,13 @@ module.exports = function(router) {
 			     //exit
 			     console.log(result);
 			     res.writeHead(200);     		
-			}	           
-			else
-			{
-			   console.log('user does not exist');
-			   res.writeHead(200);
-			   res.end('invalid');	
-			}
-                });
+			//}	           
+			//else
+			//{
+			  // console.log('user does not exist');
+			   //res.writeHead(200);
+			   //res.end('invalid');	
+			//}
 	    });
 	});
 
