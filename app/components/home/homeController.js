@@ -25,6 +25,9 @@ angular.module('provoPantry').controller('HomeController',
 			$scope.results[i].ingredientLines = data.ingredientLines;
 		});
 	};
+	$scope.favorite = function(){
+            console.log("you want to favorite this recipe?");
+	}
 
 	//update recipe list real-time
 	$scope.$watch(function() { return recipeFactory.recipes;}, function(newVal, oldVal) {
