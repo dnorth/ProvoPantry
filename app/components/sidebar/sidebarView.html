@@ -40,10 +40,10 @@
       <button class="btn btn-primary" ng-click="search()">Search</button>
     </div>
   </div>
-  <div ng-repeat="searchType in searchTypes" class="col-sm-12" style="background-color:{{searchType.color}}" ng-show="searchType.list.length > 0">
-	<h5><b>{{searchType.title}}</b></h5>
-    <ul>
-      <li ng-repeat="ingredient in searchType.list"><input type='button' ng-click="removeIngredient(searchType.name, ingredient)" value="0">{{ingredient}}</li>
+  <div ng-repeat="searchType in searchTypes" class="col-sm-12" ng-show="searchType.list.length > 0">
+    <h5><b>{{searchType.title}}</b></h5>
+    <ul class="list-group">
+      <li class="list-group-item list-item" style="color: white; background-color:{{searchType.color}}" ng-repeat="ingredient in searchType.list">{{ingredient}}<i class="fa fa-ban pull-right" ng-click="removeIngredient(searchType.name, ingredient)"></i></li>
     </ul>
   </div>
 </div>
