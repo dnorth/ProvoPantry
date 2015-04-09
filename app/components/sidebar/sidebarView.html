@@ -20,22 +20,23 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-1">
+    <div class="col-sm-10 col-sm-offset-1">
       <form ng-submit="addIngredient(searchType, ingredientInput)">
-        <div class="search">
-          <i class="fa fa-search"></i>
+        <div class="search input-group">
           <input type="text" class="form-control" placeholder="{{placeholder}}" ng-model="ingredientInput">
+	  <i class="fa fa-search"></i>
+	  <div class="input-group-btn">
+	      <button class="btn btn-default"><i class="fa {{searchType}}"></i></button>
+	      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" id="dropdownMenu"> <span class="caret"></span></button>
+	      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+		<li role="presentation" ng-repeat="searchType in searchTypes">
+		  <a role="menuitem" tabindex="-1" ng-click="updateType($index)"><i class="fa {{searchType.name}}"></i></a>
+		</li>
+	      </ul>
+	  </div>
 	</div>
       </form>
     </div> 
-    <div class="col-sm-1">
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" id="dropdownMenu">{{searchType}}<span class="caret"></span></button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-	  <li role="presentation" ng-repeat="searchType in searchTypes"><a role="menuitem" tabindex="-1" ng-click="updateType($index)">{{searchType.name}}</a></li>
-        </ul>
-      </div>
-    </div>	    
   </div>
   <div class="row top10">
     <div class="col-sm-10 col-sm-offset-1">
@@ -43,9 +44,9 @@
     </div>
   </div>
   <div ng-repeat="searchType in searchTypes" class="col-sm-12" ng-show="searchType.list.length > 0">
-    <h5><b>{{searchType.title}}</b></h5>
+    <h5>{{searchType.title}}</b></h5>
     <ul class="list-group">
-      <li class="list-group-item list-item" style="color: white; background-color:{{searchType.color}}" ng-repeat="ingredient in searchType.list">{{ingredient}}<i class="fa fa-ban pull-right" ng-click="removeIngredient(searchType.name, ingredient)"></i></li>
+      <li class="list-group-item list-item" style="color: white; background-color:{{searchType.color}}" ng-repeat="ingredient in searchType.list">{{ingredient}}<i class="fa fa-times pull-right" ng-click="removeIngredient(searchType.name, ingredient)"></i></li>
     </ul>
   </div>
 </div>
