@@ -43,6 +43,21 @@ var register = {
     }
 }
 
+var profile = {
+    name: 'profile',
+    url: '/profile',
+    views: {
+        '@': {
+            templateUrl: 'components/register/profileView.html',
+            controller: 'ProfileController'
+        },
+        'sidebar@': {
+            templateUrl: 'components/sidebar/sidebarView.html',
+            controller: 'SidebarController'
+        }
+    }
+}
+
 angular.module('provoPantry', ['ui.router','ngCookies'])
     .config([
 	     '$stateProvider',
@@ -51,7 +66,8 @@ angular.module('provoPantry', ['ui.router','ngCookies'])
             $stateProvider
             .state(home)
             .state(register)
-            .state(login);
+            .state(login)
+	    .state(profile);
             
             $urlRouterProvider.otherwise('/home');
 	     }]);

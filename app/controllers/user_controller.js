@@ -34,10 +34,10 @@ exports.login = function(req, res){
 			    //res.json(user.withoutPassword());
 			}
 			else{
-			    console.log(username + " failed authentication.")
-                req.session.regenerate(function() {
-			        res.json({});
-                }
+			    	console.log(username + " failed authentication.");
+                		req.session.regenerate(function() {
+			        	res.json({});
+                		});
 			}
 		    }
 		});
