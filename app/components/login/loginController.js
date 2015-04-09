@@ -8,7 +8,7 @@ angular.module('provoPantry').controller('LoginController',
 		    password: $scope.password
 		}, function(res) {
 		    if(res.redirect) {
-                window.location = res.redirect;
+			window.location = res.redirect;
 		    }
 		    else {
 			    $scope.invalidUserMessage = "Invalid username or password";
