@@ -1,27 +1,73 @@
 angular.module('provoPantry').controller('SidebarController', 
-    ['$scope', '$http', 'recipeFactory', function($scope, $http, recipeFactory){
+					 ['$scope', '$http', '$cookies', 'recipeFactory', 'UserFactory', function($scope, $http, $cookies, recipeFactory, UserFactory){
 
-	$scope.ingredients = [];
+    UserFactory.getUser(function() {
+        $scope.sessionUser = UserFactory.user;
+    });
+	$scope.placeholder = "Add Ingredient";
 	var appId  = '8722cb52';
 	var apiKey = '07e376a569ffb79e44e7122e1abe9b0a';
+	$scope.searchTypes = [
+		{
+			name:'include',
+			list: [],
+			color: "#5A764B",
+			placeholder: "Add Ingredient",
+			title: "Include these ingredients",
+			apiTag: "&allowedIngredient[]="
+		},
+		{
+			name:'exclude',
+			list: [],
+			color: "#BF4D48",
+			placeholder: "Exclude Ingredient",
+			title: "Exclude these ingredients",
+			apiTag: "&excludedIngredient[]="
+		}
+	];
+	$scope.searchType = $scope.searchTypes[0].name;
+	$scope.updateType = function(index) {
+		$scope.searchType = $scope.searchTypes[index].name;
+		$scope.placeholder = $scope.searchTypes[index].placeholder;
+	};
 
-	$scope.addIngredient = function(newIngredient) {
-		$scope.ingredients.push(newIngredient);
+	$scope.addIngredient = function(type, newIngredient) {
+		var index = 0;
+		for(var i = 0; i < $scope.searchTypes.length; i++) {
+			if($scope.searchTypes[i].name == type) {
+				index = i;
+				break;
+			}
+		}
+		$scope.searchTypes[index].list.push(newIngredient);
 		$scope.ingredientInput = "";
 	};
 
+	$scope.removeIngredient = function(type, ingredient) {
+		var index = 0;
+		for(var i = 0; i < $scope.searchTypes.length; i++) {
+			if($scope.searchTypes[i].name == type) {
+				index = i;
+				break;
+			}
+		}
+		var ingredientIndex = $scope.searchTypes[index].list.indexOf(ingredient);
+		$scope.searchTypes[index].list.splice(ingredientIndex, 1);
+	};
+
 	$scope.search = function() {
-		if($scope.ingredients.length < 1) {
+		if($scope.searchTypes[0].list.length < 1) {
 			alert('Please add some ingredients to include in your recipe!');
 			return;
 		}
-		var allowed = "";
-		for(var i=0; i < $scope.ingredients.length; i++) {
-			allowed += "&allowedIngredient[]="+$scope.ingredients[i];
+		var query = "";
+		for(var i=0; i < $scope.searchTypes.length; i++) {
+			for(var j=0; j < $scope.searchTypes[i].list.length; j++) {
+				query += $scope.searchTypes[i].apiTag + $scope.searchTypes[i].list[j];
+			}
 		}
-		var url = 'https://api.yummly.com/v1/api/recipes?_app_id='+appId+'&_app_key='+apiKey+allowed;
+		var url = 'https://api.yummly.com/v1/api/recipes?_app_id='+appId+'&_app_key='+apiKey+query;
 		$http.get(url).success(function(data) {
-			console.log(data);
 			var results = [];
 			for(var i=0; i < data.matches.length; i++) {
 				var result = {
@@ -40,6 +86,7 @@ angular.module('provoPantry').controller('SidebarController',
 			recipeFactory.recipes = results;
 		});
 	}
+
 }])
 .factory('recipeFactory', [function() {
 	var r = {

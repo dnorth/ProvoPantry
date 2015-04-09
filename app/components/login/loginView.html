@@ -8,6 +8,7 @@
         <div class="panel-body text-center">
           <div class="row">
             <div class="col-md-10 col-md-offset-1">      
+	      <div id="invalidUserMessage" ng-bind="invalidUserMessage"></div>
               <form ng-submit="validateUser()" id="loginForm">
                 <div class="form-group">
                   <input ng-model="username" class="form-control text-center" name="username" type="text" placeholder="username" ng-model="username">
@@ -23,7 +24,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">      
-              <div> HELLO </div>
+              <div ng-bind="user.username"></div>
               <a ui-sref="register" >Sign Up</a>
             </div>
           </div>

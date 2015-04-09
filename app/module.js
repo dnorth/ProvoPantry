@@ -43,7 +43,7 @@ var register = {
     }
 }
 
-angular.module('provoPantry', ['ui.router'])
+angular.module('provoPantry', ['ui.router','ngCookies'])
     .config([
 	     '$stateProvider',
 	     '$urlRouterProvider',

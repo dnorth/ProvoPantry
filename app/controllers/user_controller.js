@@ -13,28 +13,36 @@ exports.login = function(req, res){
 	var username = lgnObj.username;
 	var pswrd = lgnObj.password;
 	if(username == 'rick' && pswrd == 'roll'){
+		res.header('Access-Control-Allow-Origin', '*');
 		res.redirect('http://bringvictory.com/');
 	}
-	users.findOne({username:username},function(err,user){
-		if(err) throw err;
-		if(user==null){
-			console.log(username + " does not exist.")
-			res.json({});
-		}
-		else{
+	else{
+	    users.findOne({username:username},function(err,user){
+		    if(err) throw err;
+		    if(user==null){
+			console.log(username + " does not exist.");
+			    res.json({});
+		    }
+		    else{
 			if(user.password==hashPW(pswrd)){
-				req.session.user = user.id;
-        			req.session.username = user.username;
-				console.log(username + " authenticated!");
-				res.cookie('username',username);
-				res.json(user.withoutPassword());
+			    req.session.regenerate(function() {
+				    req.session.user = user.id;
+				    req.session.username = user.username;
+				    console.log(username + " authenticated!");
+				    res.cookie('username',username);
+				    res.json({'redirect' : '/home'});
+				});
+			    //res.json(user.withoutPassword());
 			}
 			else{
-				console.log(username + " failed authentication.")
-				res.json({'failure' : 'failure'});
+			    console.log(username + " failed authentication.");
+                req.session.regenerate(function() {
+			        res.json({});
+                });
 			}
-		}
-	});
+		    }
+		});
+	}
 }
 
 
@@ -72,6 +80,7 @@ exports.register = function(req,res){
 
 exports.logout = function(req,res){
 	req.session.destroy(function(){
+		res.clearCookie('username');
 		res.redirect('/login#/login');
 	});
 }
