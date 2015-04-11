@@ -30,7 +30,7 @@ exports.login = function(req, res){
 				    req.session.username = user.username;
 				    console.log(username + " authenticated!");
 				    res.cookie('username',username);
-				    res.json({'redirect' : '/home'});
+				    res.json({'redirect' : '/'});
 				});
 			    //res.json(user.withoutPassword());
 			}
