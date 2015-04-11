@@ -48,7 +48,7 @@ var profile = {
     url: '/profile',
     views: {
         '@': {
-            templateUrl: 'components/register/profileView.html',
+            templateUrl: 'components/profile/profileView.html',
             controller: 'ProfileController'
         },
         'sidebar@': {

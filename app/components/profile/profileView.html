@@ -1,0 +1,12 @@
+<div class='col-md-12'>
+	{{user.firstName}}
+	{{user.lastName}}
+	<div ng-repeat="recipe in user.favorites" style="background-color:#E8E7E6;margin-bottom: 10px" class = "col-md-12">
+		<div class="col-md-2" style="margin-top:5px">
+                        <img src={{recipe.imageURL}}>
+                </div>
+		<h3>{{recipe.name}}</h3>
+                <p><b>From:</b> {{recipe.source}}</p>
+	</div>
+</div>
+

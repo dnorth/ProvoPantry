@@ -59,8 +59,7 @@ exports.register = function(req,res){
 		if(result!=null){
 			console.log('username in use');
 			console.log(result);
-			res.writeHead(200);
-			res.end('invalid');
+			res.json({err:'username in use'});
 		}
 		else{
 			var newUser = new users(regObj);
@@ -71,8 +70,7 @@ exports.register = function(req,res){
 				req.session.user = user.id;
       				req.session.username = user.username;
 				res.cookie('username',username);
-				res.writeHead(200);
-				res.end('WERK');
+				res.json({'redirect':'/home'});
 			});
 		}
 	});

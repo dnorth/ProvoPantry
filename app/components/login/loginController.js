@@ -17,6 +17,18 @@ angular.module('provoPantry').controller('LoginController',
 	}	
         
         $scope.submitRegistration = function(){
-            alert("Registered!!");
+            UserFactory.registerUser({
+	    	username:$scope.username,
+		password:$scope.password,
+		email:$scope.email},
+		function(res) {
+			if(res.redirect){
+				window.location = res.redirect;
+			}
+			else{
+				$scope.invalidUserMessage = res.err;
+			}
+		}
+	    )
         }
 }]);
