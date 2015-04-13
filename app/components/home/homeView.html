@@ -7,7 +7,7 @@
 		<p><b>From:</b> {{recipe.source}}</p>
 		<b>Ingredients: </b><span ng-repeat="ingredient in recipe.ingredients">{{ingredient}}, </span>
 		<p style="margin-top:20px"><button ng-click="showRecipe = ! showRecipe; getRecipe(recipe.id)">See Details</button>
-		<div ng-click="favorite()" id="heart"></div></p>
+		<div ng-click="favorite(recipe.id)" id="heart"></div></p>
 		<div ng-show="showRecipe">
 			<p>See complete recipe at: <a href={{recipe.sourceURL}} target='_blank'>{{recipe.sourceName}}</a></p>
 			
