@@ -32,6 +32,9 @@ angular.module('provoPantry').controller('SidebarController',
 	};
 
 	$scope.addIngredient = function(type, newIngredient) {
+		if(newIngredient.length < 1) {
+			return;
+		}
 		var index = 0;
 		for(var i = 0; i < $scope.searchTypes.length; i++) {
 			if($scope.searchTypes[i].name == type) {
