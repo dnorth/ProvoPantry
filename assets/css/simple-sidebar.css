@@ -131,7 +131,43 @@
     }
 
     #sidebar-wrapper {
-        width: 250px;
+        width: 50px;
+	float: right;
+    }
+
+    #sidebar-wrapper .row {
+	visibility: hidden;
+    }
+
+    #sidebar-wrapper .nowrap {
+	visibility: hidden;
+    }
+
+    #sidebar-wrapper .cleaver {
+	display: block;
+	width: 50px;
+	padding-top: 50px;
+    }
+
+    #sidebar-wrapper .nowrap {
+	white-space: nowrap;
+    }
+
+    #sidebar-wrapper:hover {
+	width: 250px;
+	float: left;
+    }
+
+    #sidebar-wrapper:hover .row {
+	visibility: visible;
+    }
+    
+    #sidebar-wrapper:hover .nowrap {
+	visibility: visible;
+    }
+
+    #sidebar-wrapper:hover .cleaver {
+	display: none;
     }
 
     #wrapper.toggled #sidebar-wrapper {
@@ -140,11 +176,11 @@
 
     #page-content-wrapper {
         padding: 20px;
-        position: relative;
+        position: absolute;
     }
 
     #wrapper.toggled #page-content-wrapper {
-        position: relative;
+        position: absolute;
         margin-right: 0;
     }
 }

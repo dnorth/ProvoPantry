@@ -18,5 +18,11 @@ angular.module('provoPantry').factory('UserFactory', ['$http', '$cookies', funct
 	    });
     }
 
+    userData.registerUser = function(data, next) {
+        return $http.post('/api/v1/register',data).success(function(res){
+                next(res);
+        });     
+    }
+
     return userData;
 }]);

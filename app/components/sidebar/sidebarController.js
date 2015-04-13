@@ -4,23 +4,23 @@ angular.module('provoPantry').controller('SidebarController',
     UserFactory.getUser(function() {
         $scope.sessionUser = UserFactory.user;
     });
-	$scope.placeholder = "Add Ingredient";
+	$scope.placeholder = "Include";
 	var appId  = '8722cb52';
 	var apiKey = '07e376a569ffb79e44e7122e1abe9b0a';
 	$scope.searchTypes = [
 		{
-			name:'include',
+			name:'fa-plus-circle',
 			list: [],
 			color: "#5A764B",
-			placeholder: "Add Ingredient",
+			placeholder: "Include",
 			title: "Include these ingredients",
 			apiTag: "&allowedIngredient[]="
 		},
 		{
-			name:'exclude',
+			name:'fa-minus-circle',
 			list: [],
 			color: "#BF4D48",
-			placeholder: "Exclude Ingredient",
+			placeholder: "Exclude",
 			title: "Exclude these ingredients",
 			apiTag: "&excludedIngredient[]="
 		}

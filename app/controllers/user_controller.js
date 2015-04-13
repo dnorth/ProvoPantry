@@ -30,15 +30,15 @@ exports.login = function(req, res){
 				    req.session.username = user.username;
 				    console.log(username + " authenticated!");
 				    res.cookie('username',username);
-				    res.json({'redirect' : '/home'});
+				    res.json({'redirect' : '/'});
 				});
 			    //res.json(user.withoutPassword());
 			}
 			else{
-			    console.log(username + " failed authentication.");
-                req.session.regenerate(function() {
-			        res.json({});
-                });
+			    	console.log(username + " failed authentication.");
+                		req.session.regenerate(function() {
+			        	res.json({});
+                		});
 			}
 		    }
 		});
@@ -59,8 +59,7 @@ exports.register = function(req,res){
 		if(result!=null){
 			console.log('username in use');
 			console.log(result);
-			res.writeHead(200);
-			res.end('invalid');
+			res.json({err:'username in use'});
 		}
 		else{
 			var newUser = new users(regObj);
@@ -71,8 +70,7 @@ exports.register = function(req,res){
 				req.session.user = user.id;
       				req.session.username = user.username;
 				res.cookie('username',username);
-				res.writeHead(200);
-				res.end('WERK');
+				res.json({'redirect':'/home'});
 			});
 		}
 	});
