@@ -44,6 +44,9 @@ angular.module('provoPantry').controller('SidebarController',
 		}
 		$scope.searchTypes[index].list.push(newIngredient);
 		$scope.ingredientInput = "";
+
+		/**************Call Search Function***************/
+		$scope.search();
 	};
 
 	$scope.removeIngredient = function(type, ingredient) {
@@ -60,7 +63,6 @@ angular.module('provoPantry').controller('SidebarController',
 
 	$scope.search = function() {
 		if($scope.searchTypes[0].list.length < 1) {
-			alert('Please add some ingredients to include in your recipe!');
 			return;
 		}
 		var query = "";
