@@ -50,7 +50,6 @@ module.exports = function(router) {
 					    {
 						contains = true;
 					    }
-					
 				    }
 				if(!contains)
 				    {
