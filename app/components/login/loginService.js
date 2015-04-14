@@ -24,5 +24,11 @@ angular.module('provoPantry').factory('UserFactory', ['$http', '$cookies', funct
         });     
     }
 
+    userData.logout = function(next) {
+	return $http.post('/api/v1/logout').success(function(){
+		angular.copy({}, userData.user)
+	    });
+    }
+
     return userData;
 }]);

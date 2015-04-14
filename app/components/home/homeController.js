@@ -47,6 +47,15 @@ angular.module('provoPantry').controller('HomeController',
                 });
 	}
 
+	$scope.toggleDetails = function(show, details) {
+		details = details === 'on' ? 'off' : 'on';
+		/*if(show) {
+			details = "Hide Details";
+		} else {
+			details = "Show Details";
+		}*/
+	}
+
 	//update recipe list real-time
 	$scope.$watch(function() { return recipeFactory.recipes;}, function(newVal, oldVal) {
 		$scope.results = recipeFactory.recipes;

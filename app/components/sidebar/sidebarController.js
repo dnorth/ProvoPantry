@@ -4,6 +4,11 @@ angular.module('provoPantry').controller('SidebarController',
     UserFactory.getUser(function() {
         $scope.sessionUser = UserFactory.user;
     });
+    
+    $scope.logout = function(){
+	console.log("Trying to log out");
+	UserFactory.logout();
+    }
 	$scope.placeholder = "Include";
 	var appId  = '8722cb52';
 	var apiKey = '07e376a569ffb79e44e7122e1abe9b0a';
@@ -32,6 +37,9 @@ angular.module('provoPantry').controller('SidebarController',
 	};
 
 	$scope.addIngredient = function(type, newIngredient) {
+		if(newIngredient.length < 1) {
+			return;
+		}
 		var index = 0;
 		for(var i = 0; i < $scope.searchTypes.length; i++) {
 			if($scope.searchTypes[i].name == type) {
@@ -41,6 +49,9 @@ angular.module('provoPantry').controller('SidebarController',
 		}
 		$scope.searchTypes[index].list.push(newIngredient);
 		$scope.ingredientInput = "";
+
+		/**************Call Search Function***************/
+		$scope.search();
 	};
 
 	$scope.removeIngredient = function(type, ingredient) {
@@ -57,7 +68,6 @@ angular.module('provoPantry').controller('SidebarController',
 
 	$scope.search = function() {
 		if($scope.searchTypes[0].list.length < 1) {
-			alert('Please add some ingredients to include in your recipe!');
 			return;
 		}
 		var query = "";
