@@ -8,7 +8,6 @@ angular.module('provoPantry').controller('SidebarController',
     $scope.logout = function(){
 	console.log("Trying to log out");
 	UserFactory.logout();
-	alert("Logged out");
     }
 	$scope.placeholder = "Include";
 	var appId  = '8722cb52';
