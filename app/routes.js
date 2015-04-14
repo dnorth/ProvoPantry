@@ -6,7 +6,7 @@ var User = mongoose.model('users');
 var usrCntrl = require('./controllers/user_controller');
 
 module.exports = function(router) {
-
+    console.log("got into router");
     // api -------------------------------------------
     router.get('/api/v1/users/:username', function(req, res) {
 	    var userName = req.param('username');
@@ -23,7 +23,7 @@ module.exports = function(router) {
 	});
 
 	router.post('/api/v1/favorite',function(req, res){
-               console.log("in favorites route");
+		console.log("in favorites route");
 		
                     var regObj = req.body;	
                     //console.log(regObj);             
@@ -49,34 +49,35 @@ module.exports = function(router) {
 						contains = true;
 					}
 				
-				}
-			     if(!contains)
-			      {
-				user.favorites.push(regObj);
-				user.update({favorites:user.favorites},function(err){
-                                          
-				    if(err)
-					console.log(err);
-				    else
-					console.log("added to faovrites");
-				});
-				console.log(user.favorites.length);	
-			      }
+					
+				    }
+				if(!contains)
+				    {
+					user.favorites.push(regObj);
+					user.update({favorites:user.favorites},function(err){
+						
+						if(err)
+						    console.log(err);
+						else
+						    console.log("added to faovrites");
+					    });
+					console.log(user.favorites.length);	
+				    }
 				else
-			      {
-				console.log("item has already been favorited");	
-			      }
-			    
-			     res.writeHead(200);     		
-			}	           
+				    {
+					console.log("item has already been favorited");	
+				    }
+				res.end();     		
+			    }	           
 			else
-			{
-			  console.log('user does not exist');
-			   res.writeHead(200);
-			   res.end('invalid');	
-			}
+			    {
+				console.log('user does not exist');
+				res.writeHead(200);
+				res.end('invalid');	
+			    }
+		    });
 	    });
-	});
+
 	router.post('/api/v1/login',usrCntrl.login);
 	router.post('/api/v1/register',usrCntrl.register);
 	router.post('/api/v1/logout',usrCntrl.logout);
