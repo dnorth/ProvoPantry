@@ -28,7 +28,7 @@ exports.login = function(req, res){
 			    req.session.regenerate(function() {
 				    req.session.user = user.id;
 				    req.session.username = user.username;
-				    console.log(username + " authenticated!");
+				    console.log(req.session.username + " authenticated!");
 				    res.cookie('username',username);
 				    res.json({'redirect' : '/'});
 				});

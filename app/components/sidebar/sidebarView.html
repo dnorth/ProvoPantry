@@ -42,28 +42,29 @@
       </div>
     </div>
   </div>
-  <div class="row nowrap">
-    <div class="col-sm-12">
-      <div class="navbar margin-bottom">
-	<div class="panel panel-default" ui-sref="profile">
-	  <div class="panel-body">
-	    <div class="nowrap">
-	      <div ng-show="sessionUser.username">
-		<div class="row">
-		  <div class="col-sm-10 col-sm-offset-1">
-		    <p><h4>
-			<span ng-bind="sessionUser.username"></span>
-			<small ng-click="logout()">logout</small>
-		    </h4></p>
+  <div id="footer">
+    <div class="row nowrap">
+      <div class="col-sm-12">
+	  <div class="panel" ui-sref="profile">
+	    <div class="panel-body">
+	      <div class="nowrap">
+	        <div ng-show="sessionUser.username">
+		  <div class="row">
+		    <div class="col-sm-10 col-sm-offset-1">
+		      <p><h4>
+		  	<span  ui-sref="profile" ng-bind="sessionUser.username"></span>
+			<small id="logout" ng-click="logout()">logout</small>
+		      </h4></p>
+		    </div>
 		  </div>
-		</div>
-	      </div>
-	      <div ng-show="!sessionUser.username">
-		<a ui-sref="login"><h4>Login</h4></a>
+	        </div>
+	        <div ng-show="!sessionUser.username" class="text-center">
+		  <a ui-sref="login"><h4>Login</h4></a>
+	        </div>
 	      </div>
 	    </div>
 	  </div>
-	</div>
+        
       </div>
     </div>
   </div>
