@@ -1,6 +1,9 @@
 body {
     background-image: url("/assets/img/cuttingboard-background.jpg");
 }
+.favorite{
+    background:yellow;
+}
 #heart {
     position:relative;
     float:right;

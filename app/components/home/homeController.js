@@ -26,7 +26,8 @@ angular.module('provoPantry').controller('HomeController',
 		});
 	};
 	$scope.favorite = function(id){
-            
+            $("#heart::before").css("background","yellow");
+	    $("#heart::after").css("background","yellow");	
             var index = 0;
 	    for(var i = 0; i < $scope.results.length; i++)
             {
