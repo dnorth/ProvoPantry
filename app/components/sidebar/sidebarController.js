@@ -4,6 +4,12 @@ angular.module('provoPantry').controller('SidebarController',
     UserFactory.getUser(function() {
         $scope.sessionUser = UserFactory.user;
     });
+    
+    $scope.logout = function(){
+	console.log("Trying to log out");
+	UserFactory.logout();
+	alert("Logged out");
+    }
 	$scope.placeholder = "Include";
 	var appId  = '8722cb52';
 	var apiKey = '07e376a569ffb79e44e7122e1abe9b0a';

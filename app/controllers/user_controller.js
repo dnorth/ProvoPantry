@@ -79,6 +79,5 @@ exports.register = function(req,res){
 exports.logout = function(req,res){
 	req.session.destroy(function(){
 		res.clearCookie('username');
-		res.redirect('/login#/login');
 	});
 }
