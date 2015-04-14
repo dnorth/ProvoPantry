@@ -29,14 +29,14 @@ module.exports = function(router) {
                     //console.log(regObj);             
 		    var user_id = req.session.user;
 		    var id = regObj.id;
-		    var user_name = req.session.username;
-		    console.log(id);	
+		    
+		    console.log(req.session.username);	
 		     users.findOne({username:req.session.username},function(err,result){
 			if(err) throw err;
 		        if(result != null)
 			{
 			     var user = new users(result);
-			     console.log(user) 
+			     console.log(user); 
                              console.log('found the user');
 			     //check if user has already faved it
 			     var favorites_array = user.favorites;
@@ -77,7 +77,6 @@ module.exports = function(router) {
 			}
 	    });
 	});
-
 	router.post('/api/v1/login',usrCntrl.login);
 	router.post('/api/v1/register',usrCntrl.register);
 	router.post('/api/v1/logout',usrCntrl.logout);
