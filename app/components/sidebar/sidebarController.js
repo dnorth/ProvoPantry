@@ -64,6 +64,9 @@ angular.module('provoPantry').controller('SidebarController',
 		}
 		var ingredientIndex = $scope.searchTypes[index].list.indexOf(ingredient);
 		$scope.searchTypes[index].list.splice(ingredientIndex, 1);
+
+		/**************Call Search Function***************/
+		$scope.search();
 	};
 
 	$scope.search = function() {
