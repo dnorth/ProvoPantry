@@ -47,6 +47,17 @@ angular.module('provoPantry').controller('SidebarController',
 				break;
 			}
 		}
+		//ensure that no ingredients are being included and excluded
+		var other = 0;
+		if(index < 1)
+			other = 1;
+		for(var i = 0; i < $scope.searchTypes[other].list.length; i++) {
+			if($scope.searchTypes[other].list[i] == newIngredient) {
+				alert('We can\'t include AND exclude an ingredient! Please remove "' + newIngredient + '" from the other list before adding it to this one!');
+				$scope.ingredientInput = "";
+				return;
+			}
+		}
 		$scope.searchTypes[index].list.push(newIngredient);
 		$scope.ingredientInput = "";
 
