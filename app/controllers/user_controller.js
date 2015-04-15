@@ -14,7 +14,7 @@ exports.login = function(req, res){
 	var pswrd = lgnObj.password;
 	if(username == 'rick' && pswrd == 'roll'){
 		res.header('Access-Control-Allow-Origin', '*');
-		res.redirect('http://bringvictory.com/');
+		res.json({'redirect' : 'http://bringvictory.com'});
 	}
 	else{
 	    users.findOne({username:username},function(err,user){
@@ -66,11 +66,13 @@ exports.register = function(req,res){
 			newUser.password = hashPW(pswrd);
 			console.log(newUser)
 			newUser.save(function(err,user){
-				console.log('Added user '+ username);
-				req.session.user = user.id;
-      				req.session.username = user.username;
-				res.cookie('username',username);
-				res.json({'redirect':'/home'});
+				req.session.regenerate(function() {
+                                    req.session.user = user.id;
+                                    req.session.username = user.username;
+                                    console.log(username + " regsitered");
+                                    res.cookie('username',username);
+                                    res.json({'redirect' : '/home'});
+                                });
 			});
 		}
 	});
