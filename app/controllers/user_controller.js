@@ -28,7 +28,7 @@ exports.login = function(req, res){
 			    req.session.regenerate(function() {
 				    req.session.user = user.id;
 				    req.session.username = user.username;
-				    console.log(username + " authenticated!");
+				    console.log(req.session.username + " authenticated!");
 				    res.cookie('username',username);
 				    res.json({'redirect' : '/'});
 				});
@@ -79,8 +79,9 @@ exports.register = function(req,res){
 }
 
 exports.logout = function(req,res){
+    console.log("Got to the logout function");
 	req.session.destroy(function(){
 		res.clearCookie('username');
-		res.redirect('/login#/login');
+		res.end();
 	});
 }
