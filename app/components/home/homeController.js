@@ -25,9 +25,13 @@ angular.module('provoPantry').controller('HomeController',
 			$scope.results[i].ingredientLines = data.ingredientLines;
 		});
 	};
-	$scope.favorite = function(id){
-            $("#heart::before").css("background","yellow");
-	    $("#heart::after").css("background","yellow");
+	$scope.favorite = function(id, $el){
+            var attr = $($el).attr('#heart');
+	    if (typeof attr !== typeof undefined && attr !== false) {
+    		  console.log("attribute exists");
+    	        }
+            $("#heart").addClass("favorite");
+	    $("#heart").removeAttr('id');
 	    console.log("Recipe id: " + id);
             var index = 0;
 	    for(var i = 0; i < $scope.results.length; i++)

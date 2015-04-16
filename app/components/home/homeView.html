@@ -11,7 +11,7 @@
 			<span ng-switch-when="true">Hide Details</span>
 			<span ng-switch-default>See Details</span>
 		</span></button>
-		<div ng-click="favorite(recipe.id)" id="heart"></div></p>
+		<div ng-click="favorite(recipe.id, this)" id="heart"></div></p>
 		<div ng-show="showRecipe">
 			<p>See complete recipe at: <a href={{recipe.sourceURL}} target='_blank'>{{recipe.sourceName}}</a></p>
 			
