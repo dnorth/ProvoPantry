@@ -1,0 +1,217 @@
+/* Custom CSS for the Sidebar */
+#logo { width: 100%; }
+
+#logout { margin-left: 70px; } 
+
+.top5 { margin-top:5px; }
+.top7 { margin-top:7px; }
+.top10 { margin-top:10px; }
+.top15 { margin-top:15px; }
+.top17 { margin-top:17px; }
+.top30 { margin-top:30px; }
+
+.search { position: relative; }
+.search input { text-indent: 20px; }
+.search .fa-search {
+    z-index: 999;
+    position: absolute;
+    top: 9px;
+    left: 12px;
+    font-size: 15px;
+    color: #ccc;
+}
+
+.searchlist {
+    background-color: {{searchType.color}};
+}
+
+body {
+    //overflow-x: hidden;
+}
+
+/* Sticky footer styles
+      -------------------------------------------------- */
+      #footer {
+	  position: absolute;
+	  bottom: 0px;
+	  width: 100%;
+      }
+
+      #footer .panel {
+	  margin-bottom: 0px;
+	  border-radius: 0px;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #E8E7E6;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 50px;
+	float: right;
+    }
+
+    #sidebar-wrapper .row {
+	visibility: hidden;
+    }
+
+    #sidebar-wrapper .nowrap {
+	visibility: hidden;
+    }
+
+    #sidebar-wrapper .cleaver {
+	display: block;
+	width: 50px;
+	padding-top: 50px;
+    }
+
+    #sidebar-wrapper .nowrap {
+	white-space: nowrap;
+    }
+
+    #sidebar-wrapper:hover {
+	width: 250px;
+	float: left;
+    }
+
+    #sidebar-wrapper:hover .row {
+	visibility: visible;
+    }
+    
+    #sidebar-wrapper:hover .nowrap {
+	visibility: visible;
+    }
+
+    #sidebar-wrapper:hover .cleaver {
+	display: none;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: absolute;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: absolute;
+        margin-right: 0;
+    }
+}

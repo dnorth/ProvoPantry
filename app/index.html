@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Recipe Searching Fun">
+    <meta name="author" content="ppTeam">
+
+    <title>Provo Pantry</title>
+
+    <!-- CDNs -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.8/angular.js"></script>
+    <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-cookies.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link href="/assets/css/simple-sidebar.css" rel="stylesheet">
+    <link href="/assets/css/home-content.css" rel="stylesheet">
+    <link href="/assets/css/login.css" rel="stylesheet">
+
+    <!-- Custom js -->
+    <script src="/assets/js/register.js"></script>
+    
+    <!-- Including the app and controllers -->
+    <script src="./module.js"></script>
+    <script src="./components/home/homeController.js"></script>
+    <script src="./components/sidebar/sidebarController.js"></script>
+    <script src="./components/login/loginService.js"></script>
+    <script src="./components/login/loginController.js"></script>
+    <script src="./components/profile/profileController.js"></script>
+    
+  </head>
+
+  <body ng-app="provoPantry">
+    <div id="wrapper" class="container-fluid">
+      <div class="row">
+	<!-- Sidebar -->
+	<div ui-view="sidebar" class="col-md-3">Sidebar</div>
+	<!-- Page Content -->
+	<div id="page-content-wrapper">
+          <div class="col-md-9" id="content">
+            <ui-view>Loading Main View...</ui-view>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
