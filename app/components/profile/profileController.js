@@ -13,6 +13,7 @@ angular.module('provoPantry').controller('ProfileController',
 		console.log(id);
 		var json = '{ "id":"'+id+'"}';
 		$http.post('api/v1/remove', json);
+		window.location.reload();
 	}
 		
    }])
