@@ -30,8 +30,11 @@ angular.module('provoPantry').controller('HomeController',
 	    if (typeof attr !== typeof undefined && attr !== false) {
     		  console.log("attribute exists");
     	        }
-            $("#heart").addClass("favorite");
-	    $("#heart").removeAttr('id');
+	    var name = "#" + id;
+	    var selected = $(name);
+            $(selected.selector).addClass("favorite");
+	    $(selected.selector).removeClass("heart");
+	    console.log(selected);
 	    console.log("Recipe id: " + id);
             var index = 0;
 	    for(var i = 0; i < $scope.results.length; i++)
