@@ -7,6 +7,8 @@
                 </div>
 		<h3>{{recipe.name}}</h3>
                 <p><b>From:</b> {{recipe.source}}</p>
+		<p>See complete recipe at: <a href={{recipe.sourceURL}} target='_blank'>{{recipe.sourceName}}</a></p>
+		<button style="color:black;border-radius:4px;background:white;margin-bottom:10px" ng-click="remove(recipe.id)">Remove</button>
 	</div>
 </div>
 
