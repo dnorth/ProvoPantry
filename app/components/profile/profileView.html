@@ -7,6 +7,20 @@
                 </div>
 		<h3>{{recipe.name}}</h3>
                 <p><b>From:</b> {{recipe.source}}</p>
+		<b>Ingredients: </b><span ng-repeat="ingredient in recipe.ingredients">{{ingredient}}, </span>
+                <p style="margin-top:20px"><button ng-click="showRecipe = ! showRecipe; getRecipe(recipe.id)" class="btn btn-default"><span ng-switch="showRecipe">
+                        <span ng-switch-when="false">See Details</span>
+                        <span ng-switch-when="true">Hide Details</span>
+                        <span ng-switch-default>See Details</span>
+                </span></button>
+                <div ng-show="showRecipe">
+                        <p>See complete recipe at: <a href={{recipe.sourceURL}} target='_blank'>{{recipe.sourceName}}</a></p>
+
+                        <ul>
+                                <li ng-repeat="ingredientLine in recipe.ingredientLines">{{ingredientLine}}</li>
+                        </ul>
+                </div>
+
 	</div>
 </div>
 
