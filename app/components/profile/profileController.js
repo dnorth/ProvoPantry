@@ -8,6 +8,12 @@ angular.module('provoPantry').controller('ProfileController',
 			}
 			
     		});
+	$scope.remove = function(id)
+	{
+		console.log(id);
+		var json = '{ "id":"'+id+'"}';
+		$http.post('api/v1/remove', json);
+	}
 		
    }])
 .config(function($httpProvider) {

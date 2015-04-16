@@ -21,7 +21,37 @@ module.exports = function(router) {
 		    }
 		});
 	});
-
+	router.post('/api/v1/remove',function(req, res){
+		console.log("in remove route");
+		var recipe_id = req.body.id;
+		users.findOne({username:req.session.username},function(err,result){
+	           if(err) throw err;
+		   if(result != null)
+		    {
+			var user = new users(result);
+		
+			 for(var i = 0; i < user.favorites.length; i++)
+                              {
+                                if(user.favorites[i].id == recipe_id)
+                                     {
+                                        user.favorites.splice(i, 1);
+                                     }
+                              }
+			user.update({favorites:user.favorites},function(err){
+					if(err)
+					console.log(err);
+					else
+					console.log("favorites was updated");
+			});
+				res.end();
+		    }	
+	   	    else
+		    {
+			console.log("could not find user");
+			res.end()
+		    }			 
+	   });
+	});
 	router.post('/api/v1/favorite',function(req, res){
 		console.log("in favorites route");
 		
