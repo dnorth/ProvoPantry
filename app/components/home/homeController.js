@@ -26,11 +26,7 @@ angular.module('provoPantry').controller('HomeController',
 		});
 	};
 	$scope.favorite = function(id, $el){
-           
-	   
-	    var selected = $('#' + id);
-            selected.addClass("favorite");
-	    selected.removeClass("heart");
+     
 	    console.log(selected);
 	    console.log("Recipe id: " + id);
             var index = 0;
@@ -51,6 +47,18 @@ angular.module('provoPantry').controller('HomeController',
 			$http.post('/api/v1/favorite', $scope.results[index]);
                 });
 	}
+    
+    $scope.rating = function(r) {
+        var ratingHTML = "";
+        for(i = 0; i < r; i++) {
+            ratingHTML += '<i class="fa fa-star rating"></i>';
+        }
+        for(i = r; i < 5; i++)
+        {
+            ratingHTML += '<i class="fa fa-star-o rating"></i>';
+        }
+        return ratingHTML;
+    }
 
 	$scope.toggleDetails = function(show, details) {
 		details = details === 'on' ? 'off' : 'on';

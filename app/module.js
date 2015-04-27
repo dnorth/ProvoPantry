@@ -58,7 +58,7 @@ var profile = {
     }
 }
 
-angular.module('provoPantry', ['ui.router','ngCookies'])
+angular.module('provoPantry', ['ui.router','ngCookies','ngSanitize'])
     .config([
 	     '$stateProvider',
 	     '$urlRouterProvider',

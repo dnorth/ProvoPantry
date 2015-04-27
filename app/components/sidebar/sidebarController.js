@@ -97,9 +97,10 @@ angular.module('provoPantry').controller('SidebarController',
 				var result = {
 					id: data.matches[i].id,
 					name: data.matches[i].recipeName,
-					imageURL: data.matches[i].smallImageUrls[0],
+					imageURL: $scope.biggerImageURL(data.matches[i].smallImageUrls[0]),
 					source: data.matches[i].sourceDisplayName,
 					ingredients: [],
+                    rating: data.matches[i].rating,
 					queries: 0
 				};
 				for(var j=0; j < data.matches[i].ingredients.length; j++) {
@@ -110,6 +111,10 @@ angular.module('provoPantry').controller('SidebarController',
 			recipeFactory.recipes = results;
 		});
 	}
+    
+    $scope.biggerImageURL = function(imageURL) {
+        return imageURL.substring(0, imageURL.lastIndexOf("=")) + "=s360"; 
+    }
 
 }])
 .factory('recipeFactory', [function() {
